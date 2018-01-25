@@ -91,7 +91,7 @@ class BitcoinCashRPC {
 
     return axios(req)
       .then(response => {
-        return response.data.result;
+        return response.data.result;f
       })
       .catch(err => {
         console.log("failed in getInfo", err.response.data);
@@ -99,7 +99,7 @@ class BitcoinCashRPC {
   }
   /**
    * @return {string} height   latest confirmed block number
-   */
+   */g
   async getBlockCount() {
     let req = await this.performMethod("getBlockCount");
 
@@ -186,6 +186,21 @@ class BitcoinCashRPC {
       })
       .catch(err => {
         console.log("failed in getNewAddress", err.response.data);
+      });
+  }
+  /**
+   * @param {String} transaction id
+   * @return {String} transaction details
+   */
+  async getTransaction(...params) {
+    let req = await this.performMethod("getTransaction", ...params);
+
+    return axios(req)
+      .then(response => {
+        return response.data.result;
+      })
+      .catch(err => {
+        console.log("failed in getBalance", err.response.data);
       });
   }
 
